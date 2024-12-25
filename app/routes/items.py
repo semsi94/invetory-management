@@ -1,21 +1,15 @@
-from flask import Blueprint, request, jsonify
-from app.models import Item, db
+from flask import Blueprint, render_template, request
 
 items_bp = Blueprint('items', __name__)
 
-@items_bp.route('/')
-def items_home():
-    return "Welcome to the Items Section!"
 
-@items_bp.route('/', methods=['GET'])
-def get_items():
-    items = Item.query.all()
-    return jsonify([{'id': item.id, 'name': item.name, 'quantity': item.quantity, 'category_id': item.category_id} for item in items])
-
-@items_bp.route('/', methods=['POST'])
+@items_bp.route('/add', methods=['GET', 'POST'])
 def add_item():
-    data = request.json
-    item = Item(name=data['name'], quantity=data['quantity'], category_id=data['category_id'])
-    db.session.add(item)
-    db.session.commit()
-    return jsonify({'message': 'Item added successfully'}), 201
+    if request.method == 'POST':
+        item_name = request.form['item_name']
+        item_quantity = request.form['item_quantity']
+        item_price = request.form['item_price']
+
+        return f"Item '{item_name}' added with quantity {item_quantity} and price {item_price}."
+    
+    return render_template('add_item.html')
