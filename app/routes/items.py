@@ -20,3 +20,12 @@ def add_item():
     db.session.commit()
     return jsonify({'message': 'Item added successfully'}), 201
     
+@app.route('/items')
+def items():
+    print("Items route accessed")  # Debugging line
+    items_data = [
+        {"id": 1, "name": "Item 1", "price": "$10"},
+        {"id": 2, "name": "Item 2", "price": "$15"},
+        {"id": 3, "name": "Item 3", "price": "$20"}
+    ]
+    return jsonify({"items": items_data})
