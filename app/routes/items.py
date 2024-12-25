@@ -3,6 +3,10 @@ from app.models import Item, db
 
 items_bp = Blueprint('items', __name__)
 
+@items_bp.route('/')
+def home():
+    return "Items home page"
+
 @items_bp.route('/', methods=['GET'])
 def get_items():
     items = Item.query.all()
@@ -15,7 +19,3 @@ def add_item():
     db.session.add(item)
     db.session.commit()
     return jsonify({'message': 'Item added successfully'}), 201
-
-@app.route('/')
-def home():
-    return "Welcome to the Inventory Management System!"
