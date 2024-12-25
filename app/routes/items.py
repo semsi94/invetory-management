@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from app.models import Item, db
 
 # Create a Blueprint object
-items_bp = Blueprint('items', __name__)
+items_bp = Blueprint('items', __name__, url_prefix='/items')
 
 # Define the /items route using the Blueprint
 @items_bp.route('/items')
