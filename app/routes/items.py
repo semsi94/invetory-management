@@ -1,8 +1,9 @@
+# app/routes/items.py
 from flask import Blueprint, request, jsonify
 from app.models import Item, db
 
 # Create a Blueprint object with a unique name
-items_bp = Blueprint('items_blueprint', __name__, url_prefix='/items')
+items_bp = Blueprint('unique_items_blueprint', __name__, url_prefix='/items')
 
 # Define the /items route using the Blueprint
 @items_bp.route('/')
