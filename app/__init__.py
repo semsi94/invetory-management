@@ -14,8 +14,4 @@ def create_app():
     # Initialize SQLAlchemy with the app
     db.init_app(app)
 
-    # Register blueprints
-    from app.routes.items import items_bp
-    app.register_blueprint(items_bp, url_prefix='/items')
-
     return app
