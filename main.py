@@ -1,7 +1,8 @@
 from flask import Flask, jsonify
 from app.routes.items import items_bp  # Import the blueprint
 
-app = Flask(__name__)
+app = create_app()
+
 
 # Register the blueprint with the app
 app.register_blueprint(items_bp)
