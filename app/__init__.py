@@ -5,7 +5,8 @@ from app.routes.items import items_bp
 def create_app():
     app = Flask(__name__)
     app.config.from_object('config.Config')
-
+    app.register_blueprint(items_bp, url_prefix='/items')
+    
     with app.app_context():
         init_db(app)
 
@@ -14,5 +15,9 @@ def create_app():
 
         app.register_blueprint(items_bp, url_prefix='/items')
         app.register_blueprint(categories_bp, url_prefix='/categories')
+
+     @app.route('/')
+    def home():
+        return "Welcome to the Inventory Management System!"
 
     return app
