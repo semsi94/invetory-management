@@ -2,7 +2,7 @@ from app import create_app
 from flask import Flask, jsonify
 from app.routes.items import items_bp
 
-app = Flask(__name__)
+app = create_app()
 
 app.register_blueprint(items_bp, url_prefix='/items')
 
