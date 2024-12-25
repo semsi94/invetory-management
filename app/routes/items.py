@@ -4,8 +4,8 @@ from app.models import Item, db
 items_bp = Blueprint('items', __name__)
 
 @items_bp.route('/')
-def home():
-    return "Items home page"
+def items_home():
+    return "Welcome to the Items Section!"
 
 @items_bp.route('/', methods=['GET'])
 def get_items():
