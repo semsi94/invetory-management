@@ -1,15 +1,13 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint
 
 items_bp = Blueprint('items', __name__)
 
+# Root route for /items/
+@items_bp.route('/')
+def items_home():
+    return "Welcome to the Items Section!"
 
-@items_bp.route('/add', methods=['GET', 'POST'])
-def add_item():
-    if request.method == 'POST':
-        item_name = request.form['item_name']
-        item_quantity = request.form['item_quantity']
-        item_price = request.form['item_price']
-
-        return f"Item '{item_name}' added with quantity {item_quantity} and price {item_price}."
-    
-    return render_template('add_item.html')
+# You can add other routes here related to items...
+@app.route('/')
+def home():
+    return "Welcome to the Inventory Management System!"
