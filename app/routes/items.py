@@ -15,3 +15,7 @@ def add_item():
     db.session.add(item)
     db.session.commit()
     return jsonify({'message': 'Item added successfully'}), 201
+
+@app.route('/')
+def home():
+    return "Welcome to the Inventory Management System!"
