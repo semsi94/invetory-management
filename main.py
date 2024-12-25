@@ -1,14 +1,11 @@
+from app import create_app
 from flask import Flask, jsonify
-from app.routes.items import items_bp  # Import the blueprint
 
-app = create_app()
-
-
-# Register the blueprint with the app
-app.register_blueprint(items_bp)
+app = Flask(__name__)
 
 @app.route('/')
 def home():
+    # Example JSON data
     data = {
         "message": "Welcome to the JSON API",
         "status": "success",
