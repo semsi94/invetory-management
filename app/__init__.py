@@ -6,7 +6,7 @@ def create_app():
     app.config.from_object('config.Config')
 
     with app.app_context():
-        init_db()
+        init_db(app)
 
         from app.routes.items import items_bp
         from app.routes.categories import categories_bp
