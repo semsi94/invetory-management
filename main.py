@@ -4,7 +4,7 @@ from app.routes.items import items_bp
 
 app = create_app()
 
-app.register_blueprint(items_bp, url_prefix='/items')
+app.register_blueprint(items_bp) 
 
 @app.route('/')
 def home():
